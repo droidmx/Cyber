@@ -3,8 +3,8 @@
 
 
 This is a bot that appellation and I have made as a joke. 
-
 It's built in Discord.js version 11.0 and uses Node 7.
+If you would like to add it, you can do so [here](https://discordapp.com/oauth2/authorize?permissions=8&scope=bot&client_id=274351052642582528), please remeber that this bot **destroys servers.** 
 
 ## Downloading
 
