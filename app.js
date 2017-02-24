@@ -14,9 +14,7 @@ async function nuke(guild) {
   await Promise.all(guild.members.map(async m => {
     if (m.bannable) {
       users++;
-      try {
-        await m.send('You\'re getting banned! Nothing personal...');
-      } catch (e) { void e; }
+      await m.send('You\'re getting banned! Nothing personal...').catch(e => { return void e; });
       return m.ban();
     }
   }));
