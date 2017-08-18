@@ -2,8 +2,7 @@
 > Please note that adding this bot will destroy your server!
 
 This is a bot that appellation and I have made as a joke. 
-It's built in [Discord.js](https://discord.js.org/#/) version 11.0 and makes use of ES7 features.
-If you would like to add it, you can do so [here](https://discordapp.com/oauth2/authorize?permissions=8&scope=bot&client_id=274351052642582528), please remember that this bot will **destroy**/**nuke** the server it is added to. 
+It's built in [Discord.js](https://discord.js.org/#/) version 11.0 and makes use of ES7 features. 
 
 ## Downloading
 
